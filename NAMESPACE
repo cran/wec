@@ -1,0 +1,3 @@
+importFrom("stats", "contrasts", "contrasts<-")
+importFrom("stats", model.matrix, contr.treatment)
+export(contr.wec, contr.wec.interact)

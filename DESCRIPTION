@@ -1,0 +1,13 @@
+Package: wec
+Type: Package
+Title: Weighted Effect Coding
+Version: 0.1
+Date: 2015-09-05
+Author: Rense Nieuwenhuis, Manfred te Grotenhuis, Ben Pelzer, Alexanter Schmidt, Ruben Konig, Rob Eisinga
+Maintainer: Rense Nieuwenhuis <rense.nieuwenhuis@sofi.su.se>
+Description: Provides functions to create factor variables with contrasts based on weighted effect coding. In weighted effect coding the estimates from a first order regression model show the deviations per group from the sample mean. This is especially useful when a researcher has no directional hypotheses and uses a sample from a population in which the number of observation per group is different The package also provides functionality for interactions between two factor variables based on weighted effect coding. Please note that this is a beta version: while functional, it does not follow all R conventions.
+License: GPL-3
+NeedsCompilation: no
+Packaged: 2015-08-28 05:40:08 UTC; rensenieuwenhuis
+Repository: CRAN
+Date/Publication: 2015-08-28 16:37:03

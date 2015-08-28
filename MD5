@@ -1,0 +1,8 @@
+c1067b34f956087b3d22e98f43671e0f *DESCRIPTION
+64ec2f5a176450a7049f0a6b24b878b5 *NAMESPACE
+0bfd725c43b47e097543de814fefb028 *R/contr.wec.R
+54a154736f6e820dfc5dcf55fa42562f *R/contr.wec.interact.R
+57181d3db4639d1a47210b18b0d135ea *data/BMI.RData
+ce42f7b1842c8d0a556046fceaffdb3e *man/BMI.Rd
+9aaeb0e5a17889c94a35ca3610ecfcea *man/contr.wec.Rd
+d9cd917eb54c9b413bf6102d24e4de28 *man/contr.wec.interact.Rd
