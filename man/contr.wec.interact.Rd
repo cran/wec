@@ -19,6 +19,10 @@ contr.wec.interact(x1, x2)
 \value{Returns a factor variable (with weighted effect coding).}
 
 \references{
+Grotenhuis, M. Te, Pelzer, B., Schmidt-Catran, A., Nieuwenhuis, R., Konig, R., and Eisinga, R. (2016). When size matters: advantages of weighted effect coding in observational studies. \emph{International Journal of Public Health}, online access:http://link.springer.com/article/10.1007/s00038-016-0901-1
+
+Grotenhuis, M. Te, Pelzer, B., Schmidt-Catran, A., Nieuwenhuis, R., Konig, R., and Eisinga, R. (2016). Weighted effect coded interactions: a novel moderation regression analysis for observational studies. \emph{International Journal of Public Health}, online access: http://link.springer.com/article/10.1007/s00038-016-0902-0
+
 Sweeney, Robert E. and Ulveling, Edwin F. (1972) A Transformation for Simplifying the Interpretation of Coefficients of Binary Variables in Regression Analysis. \emph{The American Statistician}, 26(5): 30-32.
 }
 
@@ -33,41 +37,35 @@ It should be noted that the procedure of applying weighted effect coding differs
 \examples{
 data(BMI)
 
-###
-# Model I: No Interaction
-###
+BMI$childless.wec.yes <- contr.wec(BMI$childless, ref="yes")
+BMI$childless.wec.no <- contr.wec(BMI$childless, ref="no")
 
-BMI$educ.wec.lowest <- contr.wec(BMI$education, ref="lowest")
-BMI$sex.wec.female <- contr.wec(BMI$sex, ref="female")
-model1a <- lm(BMI ~ educ.wec.lowest +  sex.wec.female, data=BMI)
-summary(model1a)
+BMI$age.wec.young <- contr.wec(BMI$age_categorical, ref="Young (18-30)")
+BMI$age.wec.older <- contr.wec(BMI$age_categorical, ref="Older (60-70)")
 
-# To obtain estimates for all categories, also run:
-#BMI$educ.wec.highest <- contr.wec(BMI$education, ref="highest")
-#BMI$sex.wec.male <- contr.wec(BMI$sex, ref="male")
-#model1b <- lm(BMI ~ educ.wec.highest +  sex.wec.male, data=BMI)
-#summary(model1b)
 
-###
-# Model II: Interaction sex * education
-###
+model3a <- lm(BMI ~ childless.wec.yes + age.wec.young, data=BMI)
+model3b <- lm(BMI ~ childless.wec.no + age.wec.older, data=BMI)
+summary(model3a)
+summary(model3b)
 
-BMI$int.2a <- contr.wec.interact(BMI$educ.wec.lowest, BMI$sex.wec.female)
-model2a <- lm(BMI ~ educ.wec.lowest +  sex.wec.female + int.2a, data=BMI)
-summary(model2a)
 
-# To obtain estimates for all categories, also run:
-#BMI$int.2b <- contr.wec.interact(BMI$educ.wec.highest, BMI$sex.wec.female)
-#BMI$int.2c <- contr.wec.interact(BMI$educ.wec.lowest, BMI$sex.wec.male)
-#BMI$int.2d <- contr.wec.interact(BMI$educ.wec.highest, BMI$sex.wec.male)
+# Interaction
+BMI$interact_c <- contr.wec.interact(BMI$childless.wec.yes, BMI$age.wec.young)
+BMI$interact_d <- contr.wec.interact(BMI$childless.wec.yes, BMI$age.wec.older)
+#BMI$interact_e <- contr.wec.interact(BMI$childless.wec.no, BMI$age.wec.young)
+#BMI$interact_f <- contr.wec.interact(BMI$childless.wec.no, BMI$age.wec.older)
 
-#model2b <- lm(BMI ~ educ.wec.highest +  sex.wec.female + int.2b, data=BMI)
-#model2c <- lm(BMI ~ educ.wec.lowest +  sex.wec.male + int.2c, data=BMI)
-#model2d <- lm(BMI ~ educ.wec.highest +  sex.wec.male + int.2d, data=BMI)
+model3c <- lm(BMI ~ childless.wec.yes + age.wec.young + interact_c, data=BMI)
+model3d <- lm(BMI ~ childless.wec.yes + age.wec.older + interact_d, data=BMI)
+#model3e <- lm(BMI ~ childless.wec.no + age.wec.young + interact_e, data=BMI)
+#model3f <- lm(BMI ~ childless.wec.no + age.wec.older + interact_f, data=BMI)
 
-#summary(model2b)
-#summary(model2c)
-#summary(model2d)
+summary(model3c)
+summary(model3d)
+#summary(model3e)
+#summary(model3f)
+
 }
 
 \keyword{classes}

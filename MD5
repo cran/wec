@@ -1,8 +1,9 @@
-c1067b34f956087b3d22e98f43671e0f *DESCRIPTION
-64ec2f5a176450a7049f0a6b24b878b5 *NAMESPACE
+2095973b82127a6f79f8bc3ed777eb27 *DESCRIPTION
+bcca284cbce08d1ccaaaecf77bc4d2cd *NAMESPACE
 0bfd725c43b47e097543de814fefb028 *R/contr.wec.R
 54a154736f6e820dfc5dcf55fa42562f *R/contr.wec.interact.R
-57181d3db4639d1a47210b18b0d135ea *data/BMI.RData
-ce42f7b1842c8d0a556046fceaffdb3e *man/BMI.Rd
-9aaeb0e5a17889c94a35ca3610ecfcea *man/contr.wec.Rd
-d9cd917eb54c9b413bf6102d24e4de28 *man/contr.wec.interact.Rd
+ab80182e1e4f9feff10a8acf8cc0fb44 *R/interact.wec.int.R
+1df21492b3f793a186c6f8c9c24cd36d *data/BMI.RData
+7ae7bfcb47fe59b26adf3a0a8207c56e *man/BMI.Rd
+415d687a0f2345e1735aa995a70ce328 *man/contr.wec.Rd
+04c6d0df4fe85a66ba5a151fb151092f *man/contr.wec.interact.Rd

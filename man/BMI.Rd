@@ -12,8 +12,9 @@
     \item{\code{education}}{a factor with levels \code{lowest}, \code{middle}, and \code{highest}}
     \item{\code{year}}{a factor with levels \code{2000}, \code{2005}, and \code{2011}}
     \item{\code{BMI}}{interval variable representing respondents' Body Mass Index (BMI)}
-    \item{\code{children}}{a factor with levels \code{Children} and \code{Childless}}
-    \item{\code{log_age}}{interval variable representing the natural log of respondents'age}
+    \item{\code{childless}}{a factor with levels \code{no} and \code{yes}}
+    \item{\code{log_age}}{interval variable representing the natural log of respondents' age}
+    \item{\code{age_categorical}}{a factor with levels \code{Young (18-30)}, \code{Middle (31-59)} and \code{Older (60-70)}}
   }
 }
 
@@ -38,7 +39,7 @@ model.dummy <- lm(BMI ~ education, data=BMI)
 summary(model.dummy)
 
 # With Controls
-model.dummy.controls <- lm(BMI ~ education + sex + log_age + children + year, data=BMI)
+model.dummy.controls <- lm(BMI ~ education + sex + log_age + childless + year, data=BMI)
 summary(model.dummy.controls)
 
 }
