@@ -1,0 +1,40 @@
+ citHeader("To cite package `wec' in publications, please use:")
+
+ citEntry(entry="Article",
+		  	textVersion = paste("Grotenhuis, M., Ben Pelzer, Eisinga, R., Nieuwenhuis, R., Schmidt-Catran, A., & Konig, R. (2016).",
+			                    "When size matters: advantages of weighted effect coding in observational studies",
+			                    "International Journal of Public Health, 1-5.", sep=""),
+        title = "When size matters: advantages of weighted effect coding in observational studies. ",
+		    author = personList(
+		        person(given="Manfred", family="Te Grotenhuis"),
+		        person(given="Ben", family="Pelzer"),
+		        person(given="Rob", family="Eisinga"),
+            person(given="Rense", family="Nieuwenhuis"),
+            person(given="Alexander", family="SChmidt-Catran"),
+            person(given="Ruben", family="Konig")),
+        year = 2016,
+        journal = "International Journal of Public Health",
+  		  volume = "",
+		    number = "",
+		    pages= "1-5",
+		    url="http://doi.org/10.1007/s00038-016-0901-1")
+
+
+citEntry(entry="Article",
+			textVersion = paste("Grotenhuis, M., Ben Pelzer, Eisinga, R., Nieuwenhuis, R., Schmidt-Catran, A., & Konig, R. (2016).",
+			"A novel method for modelling interaction between categorical variables.",
+			"International Journal of Public Health, 1-5.", sep=""),
+        title = "A novel method for modelling interaction between categorical variables. ",
+		    author = personList(
+		        person(given="Manfred", family="Te Grotenhuis"),
+		        person(given="Ben", family="Pelzer"),
+		        person(given="Rob", family="Eisinga"),
+            person(given="Rense", family="Nieuwenhuis"),
+            person(given="Alexander", family="SChmidt-Catran"),
+            person(given="Ruben", family="Konig")),
+        year = 2016,
+        journal = "International Journal of Public Health",
+		volume = "",
+		number = "",
+		pages= "1-5",
+		url="http://doi.org/10.1007/s00038-016-0902-0")
