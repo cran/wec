@@ -1,8 +1,8 @@
  citHeader("To cite package `wec' in publications, please use:")
 
  citEntry(entry="Article",
-		  	textVersion = paste("Grotenhuis, M., Ben Pelzer, Eisinga, R., Nieuwenhuis, R., Schmidt-Catran, A., & Konig, R. (2016).",
-			                    "When size matters: advantages of weighted effect coding in observational studies",
+		  	textVersion = paste("Grotenhuis, M., Ben Pelzer, Eisinga, R., Nieuwenhuis, R., Schmidt-Catran, A., & Konig, R. (2016). ",
+			                    "When size matters: advantages of weighted effect coding in observational studies. ",
 			                    "International Journal of Public Health, 1-5.", sep=""),
         title = "When size matters: advantages of weighted effect coding in observational studies. ",
 		    author = personList(
@@ -21,8 +21,8 @@
 
 
 citEntry(entry="Article",
-			textVersion = paste("Grotenhuis, M., Ben Pelzer, Eisinga, R., Nieuwenhuis, R., Schmidt-Catran, A., & Konig, R. (2016).",
-			"A novel method for modelling interaction between categorical variables.",
+			textVersion = paste("Grotenhuis, M., Ben Pelzer, Eisinga, R., Nieuwenhuis, R., Schmidt-Catran, A., & Konig, R. (2016). ",
+			"A novel method for modelling interaction between categorical variables. ",
 			"International Journal of Public Health, 1-5.", sep=""),
         title = "A novel method for modelling interaction between categorical variables. ",
 		    author = personList(

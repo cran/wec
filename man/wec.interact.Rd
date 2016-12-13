@@ -53,24 +53,24 @@ summary(model3b)
 # Interaction
 BMI$interact_c <- wec.interact(BMI$childless.wec.yes, BMI$age.wec.young)
 BMI$interact_d <- wec.interact(BMI$childless.wec.yes, BMI$age.wec.older)
-#BMI$interact_e <- wec.interact(BMI$childless.wec.no, BMI$age.wec.young)
-#BMI$interact_f <- wec.interact(BMI$childless.wec.no, BMI$age.wec.older)
+BMI$interact_e <- wec.interact(BMI$childless.wec.no, BMI$age.wec.young)
+BMI$interact_f <- wec.interact(BMI$childless.wec.no, BMI$age.wec.older)
 
 model3c <- lm(BMI ~ childless.wec.yes + age.wec.young + interact_c, data=BMI)
 model3d <- lm(BMI ~ childless.wec.yes + age.wec.older + interact_d, data=BMI)
-#model3e <- lm(BMI ~ childless.wec.no + age.wec.young + interact_e, data=BMI)
-#model3f <- lm(BMI ~ childless.wec.no + age.wec.older + interact_f, data=BMI)
+model3e <- lm(BMI ~ childless.wec.no + age.wec.young + interact_e, data=BMI)
+model3f <- lm(BMI ~ childless.wec.no + age.wec.older + interact_f, data=BMI)
 
 summary(model3c)
 summary(model3d)
-#summary(model3e)
-#summary(model3f)
+summary(model3e)
+summary(model3f)
 
 
 # Interaction weighted effect coded categorical variable and ratio/interval variable
 
 data(PUMS)
-data(PUMS)
+
 
 PUMS$race.wec <- factor(PUMS$race)
 contrasts(PUMS$race.wec) <- contr.wec(PUMS$race.wec, "White")

@@ -6,7 +6,7 @@
   The ACS Public Use Microdata Sample files (\code{PUMS}) are a sample of the actual responses to the American Community Survey and include most population and housing characteristics. }
 
 \format{
-  A data frame with 4500 observations on the following 4 variables.
+  A data frame with 10000 observations on the following 4 variables.
   \describe{
     \item{\code{wage}}{annual wages (binned to 1000s, top-coded, in US dollar)}
     \item{\code{race}}{a factor with levels \code{Hispanic}, \code{Black}, \code{Asian}, and \code{White}}
@@ -16,7 +16,7 @@
 }
 
 \source{
-These data are a random subset of 4500 observations from working individuals aged over 25 in the 2013 ACS Public Use Microdata Sample files (\code{PUMS}).}
+These data are a random subset of 10000 observations from working individuals aged over 25 in the 2013 ACS Public Use Microdata Sample files (\code{PUMS}).}
 
 \examples{
 

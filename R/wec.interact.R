@@ -14,6 +14,8 @@ wec.interact <- function(x1, x2, output.contrasts=FALSE)
     mm <- model.matrix(~x1*x2)
     #Remove the intercept from the model matrix
     mm <- mm[,-1]
+    mm.full <- mm
+    mm <- unique(mm)
 
     # Separate main from interaction effects
     n.int <- (length(levels(x1)) -1) * (length(levels(x2)) -1)
@@ -59,7 +61,7 @@ wec.interact <- function(x1, x2, output.contrasts=FALSE)
 
     # CONDITION 2:
     # Whenever the product of two dummies is <0, a NEGATIVE fraction has to be inserted
-    # It is the number of observations in the cell for which the two product terms are indicators divided by
+    # It is the number of observations in the cell for which the two product terms are indicators, divided by
     # the number of observations in the cell to which the particular observation belongs
 
     cond2 <- which(mm.int<0, arr.ind=TRUE)
@@ -67,13 +69,36 @@ wec.interact <- function(x1, x2, output.contrasts=FALSE)
     for (i in 1:nrow(cond2)) {
 
       num <-    table(x1,x2)[which(reftable==colnames(mm.int)[cond2[i,2]])]
-      denom <-  table(x1,x2)[x1[cond2[i,1]], x2[cond2[i,1]]]
+      denom <-  table(x1,x2)[x1[as.numeric(rownames(cond2)[i])], x2[as.numeric(rownames(cond2)[i])]]
 
       mm.int[cond2[i,1], cond2[i,2]] <- -1 * num / denom
 
     }
 
-    return(mm.int)
+    ##
+
+    mm[,-1:-n.main] <- mm.int
+
+    if(output.contrasts)
+    {
+      warning("When interacting to weighted effect coded variables, coding matrix cannot be used to set contrasts.")
+      ind <- as.numeric(row.names(mm.int))
+      rownames(mm.int) <- paste(x1[ind], x2[ind], sep=":")
+      return(mm.int)
+    }
+
+
+    mm.full <- mm.full[,1:n.main]
+
+    mm.full <- as.data.frame(mm.full)
+    mm <- as.data.frame(mm)
+
+    output.data <- left_join(mm.full, mm, by=names(mm.full))
+
+    output.data <- output.data[,-1:-n.main]
+    output.data <- as.matrix(output.data)
+
+    return(output.data)
 
   }
 
@@ -85,33 +110,33 @@ wec.interact <- function(x1, x2, output.contrasts=FALSE)
   if(class(x2)!="factor"){
 
 
-  #determine the ref category of x1
-  ref <- which(apply(contrasts(x1), 1, sum)!=1)
+    #determine the ref category of x1
+    ref <- which(apply(contrasts(x1), 1, sum)!=1)
 
-  # calculate weights
-  weights <- tapply(x2, x1, function(x) {sum((x-mean(x))^2)})
-  weights <- -1 * weights / weights[ref]
+    # calculate weights
+    weights <- tapply(x2, x1, function(x) {sum((x-mean(x))^2)})
+    weights <- -1 * weights / weights[ref]
 
-  # create effect matrix (based on effect coding, but apply correct weights)
-  effect.matrix <- contr.sum(length(levels(x1)))
-  effect.matrix[-ref,] <- effect.matrix[1:length(levels(x1))-1,]
-  effect.matrix[ref,] <- weights[-ref]
+    # create effect matrix (based on effect coding, but apply correct weights)
+    effect.matrix <- contr.sum(length(levels(x1)))
+    effect.matrix[-ref,] <- effect.matrix[1:length(levels(x1))-1,]
+    effect.matrix[ref,] <- weights[-ref]
 
-  if(output.contrasts) {return(effect.matrix)}
+    if(output.contrasts) {return(effect.matrix)}
 
-  # assign 'variable' names for output
-  colnames(effect.matrix) <- names(weights)[-ref]
-  rownames(effect.matrix) <- names(weights)
+    # assign 'variable' names for output
+    colnames(effect.matrix) <- names(weights)[-ref]
+    rownames(effect.matrix) <- names(weights)
 
-  # Calculate the model matrix
-  interact <- x1
-  contrasts(interact) <- effect.matrix
+    # Calculate the model matrix
+    interact <- x1
+    contrasts(interact) <- effect.matrix
 
-  output <- model.matrix(~interact)[,-1] * x2
-  output <- apply(output,2,function(x) x-ave(x, x1))
+    output <- model.matrix(~interact)[,-1] * x2
+    output <- apply(output,2,function(x) x-ave(x, x1))
 
-  # return model matrix
-  return(output)
+    # return model matrix
+    return(output)
 
   }
 }

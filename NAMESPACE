@@ -1,4 +1,5 @@
 importFrom("stats", "contrasts", "contrasts<-")
 importFrom("stats", "model.matrix", "contr.treatment", "ave", "contr.sum")
 importFrom("stats", "model.frame", "relevel", "update")
+importFrom("dplyr", "left_join")
 export(contr.wec, wec.interact)
